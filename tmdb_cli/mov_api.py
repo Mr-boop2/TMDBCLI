@@ -20,9 +20,15 @@ ENDPOINTS = {
     "top":      "top_rated",
 }
 
-API_KEY = os.getenv("API_Key")               # fail fast if missing
+API_KEY = (
+    os.getenv("TMDB_API_KEY")      # preferred modern name
+    or os.getenv("API_Key")        # legacy fallback
+)
 if not API_KEY:
-    raise RuntimeError("API_Key not found in environment (.env)")
+    raise RuntimeError(
+        "TMDB API token not found. Set TMDB_API_KEY (preferred) or API_Key. "
+        "Example (PowerShell): setx TMDB_API_KEY \"Bearer <your_v4_token>\""
+    )
 
 # ---------------------------------------------------------------------------
 def movie_request(
@@ -103,3 +109,4 @@ def A_Main(movie_type: str, release_year: int | None) -> None:        # entry po
 
         answer = input("View more? (Y/N): ").strip().lower()
         keep_going = answer == "y"
+
