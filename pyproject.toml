@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"      # tells pip to use setuptools
+
+[project]                     # PEP 621 metadata
+name = "tmdb-cli"
+version = "0.1.0"
+description = "CLI tool that fetches movies from TMDB"
+readme = "README.md"
+authors = [{ name = "Neil Jordan", email = "Njordan1342@gmail.com" }]
+requires-python = ">=3.11"
+dependencies = [
+  "click>=8",
+  "rich>=13",
+  "python-dotenv>=1",
+  "requests>=2",
+  "google-genai>=0.3",          # if you use Gemini SDK
+]
+
+
+[project.scripts]             # creates the `tmdb-app` console command
+tmdb-app = "tmdb_cli.cli:cli"           # :contentReference[oaicite:1]{index=1}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["tmdb_cli*"]
+
