@@ -40,5 +40,5 @@ upcoming
 
 
 2. Install this project:
-   ```bash
-   pipx install git+https://github.com/your-username/tmdb-cli-tool.git
+   pipx install git+https://github.com/Mr-boop2/TMDBCLI.git
+
